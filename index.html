@@ -12,17 +12,53 @@
 
 <body>
     <header>
-        <h1>Trivia Game</h1>
+        <h1>Trivia: The Final Frontier</h1>
     </header>
     <container>
         <button id="start-game">Start Game</button>
         <div id="show-timer"><br></div>
         <div id="questions">
-            <h3>Is this a question?</h3>
+            <h3>What is the most common type of star found in the Milky Way Galaxy?</h3>
             <form class="question" id="question-1">
-                <input type="radio" name="answers-1" value="yes"> Yeah.
-                <input type="radio" name="answers-1" value="no"> Nah.
-                <input type="radio" name="answers-1" value="maybe"> Perhaps.
+                <input type="radio" name="answers" value="yes"> Red dwarf
+                <input type="radio" name="answers" value="no"> Red giant
+                <input type="radio" name="answers" value="no"> Yellow dwarf
+                <input type="radio" name="answers" value="no"> Blue giant
+            </form>
+            <h3>What is the largest moon in our solar system?</h3>
+            <form class="question" id="question-2">
+                <input type="radio" name="answers" value="no"> Charon
+                <input type="radio" name="answers" value="no"> Titan
+                <input type="radio" name="answers" value="yes"> Ganymede
+                <input type="radio" name="answers" value="no"> Phobos
+            </form>
+            <h3>What is the closest star to our solar system?</h3>
+            <form class="question" id="question-3">
+                <input type="radio" name="answers" value="no"> Epsilon Eridani
+                <input type="radio" name="answers" value="yes"> Proxima Centauri
+                <input type="radio" name="answers" value="no"> Sirius
+                <input type="radio" name="answers" value="no"> Tau Ceti
+            </form>
+            <h3>How long does it take for the sun's light to reach the Earth?</h3>
+            <form class="question" id="question-4">
+                <input type="radio" name="answers" value="no"> 41 seconds
+                <input type="radio" name="answers" value="yes"> 8 minutes
+                <input type="radio" name="answers" value="no"> 93 minutes
+                <input type="radio" name="answers" value="no"> 12 seconds
+            </form>
+            <h3>Which of the following planets spins in the opposite direction from the rest?</h3>
+            <form class="question" id="question-5">
+                <input type="radio" name="answers" value="yes"> Venus
+                <input type="radio" name="answers" value="no"> Neptune
+                <input type="radio" name="answers" value="no"> Mars
+                <input type="radio" name="answers" value="no"> Saturn
+            </form>
+            <h3>Roughly how many stars are in the Andromeda Galaxy?</h3>
+            <form class="question" id="question-6">
+                <input type="radio" name="answers" value="no"> 80 million
+                <input type="radio" name="answers" value="no"> 300 billion
+                <input type="radio" name="answers" value="no"> 500 million
+                <input type="radio" name="answers" value="yes"> 1 trillion
             </form>
             <button id="end-game">Submit Answers</button>
         </div>

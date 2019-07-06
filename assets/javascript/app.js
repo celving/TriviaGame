@@ -2,13 +2,13 @@
 
 var intervalId;
 
-var time = 10;
+var time = 60;
 
 var correctAnswers = 0;
 
 var incorrectAnswers = 0;
 
-var blankAnswers = 0;
+var blankAnswers = 6;
 
 
 $(document).ready(function () {
@@ -23,27 +23,31 @@ $(document).ready(function () {
     }
 
     //Functions that check if the user's answer is correct
-    function checkAnswersOne() {
-        var questionOneAnswer = $("input[name=answers-1]:checked").val();
-        if (questionOneAnswer === "yes") {
-            correctAnswers++;
-        }
+    function checkAnswers() {
+        $("input:checked").each(function () {
 
-        else if (questionOneAnswer === "no" || questionOneAnswer === "maybe") {
-            incorrectAnswers++;
-        }
+            if ($(this).val() == "yes") {
+                correctAnswers++;
+                blankAnswers--;
+            }
 
-        else {
-            blankAnswers++;
-        }
+
+            else {
+                incorrectAnswers++;
+                blankAnswers--;
+            }
+
+        })
 
     }
 
+
+
     //Function that tallies the user's score when time expires or the user presses the submit button
 
-    function endGame(){
+    function endGame() {
         stop();
-        checkAnswersOne();
+        checkAnswers();
         $("#correct-answers").text("Correct answers: " + correctAnswers);
         $("#incorrect-answers").text("Incorrect answers: " + incorrectAnswers);
         $("#blank-answers").text("Unanswered questions: " + blankAnswers);
@@ -65,26 +69,26 @@ $(document).ready(function () {
         $("#results").hide();
         $("#start-game").hide();
         $("#questions").show();
-        time = 10;
+        time = 60;
         $("#show-timer").show();
         $("#show-timer").html("<h2>Time remaining: " + time)
         //Reset the user's score
         correctAnswers = 0;
         incorrectAnswers = 0;
-        blankAnswers = 0;
+        blankAnswers = 6;
         //Starts the timer
         intervalId = setInterval(decrement, 1000);
     }
 
-    $("#start-game").click(function(){
+    $("#start-game").click(function () {
         startGame();
     });
 
-    $("#replay").click(function(){
+    $("#replay").click(function () {
         startGame();
     })
 
-    $("#end-game").click(function(){
+    $("#end-game").click(function () {
         $("#show-timer").hide();
         endGame();
     })
