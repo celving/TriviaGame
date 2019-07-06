@@ -4,47 +4,88 @@ var intervalId;
 
 var time = 10;
 
-var correctAnswers;
+var correctAnswers = 0;
 
-var incorrectAnswers;
+var incorrectAnswers = 0;
 
-//Function that decrements the timer, updates the html element, and runs the stop function when the timer hits 0
-function decrement(){
-    time--;
-    $("#show-timer").text("Time remaining: " + time)
-    if (time === 0){
+var blankAnswers = 0;
+
+
+$(document).ready(function () {
+    //Function that decrements the timer, updates the html element, and runs the stop function when the timer hits 0
+    function decrement() {
+        time--;
+        $("#show-timer").html("<h2>Time remaining: " + time)
+        if (time === 0) {
+            stop();
+            endGame();
+        }
+    }
+
+    //Functions that check if the user's answer is correct
+    function checkAnswersOne() {
+        var questionOneAnswer = $("input[name=answers-1]:checked").val();
+        if (questionOneAnswer === "yes") {
+            correctAnswers++;
+        }
+
+        else if (questionOneAnswer === "no" || questionOneAnswer === "maybe") {
+            incorrectAnswers++;
+        }
+
+        else {
+            blankAnswers++;
+        }
+
+    }
+
+    //Function that tallies the user's score when time expires or the user presses the submit button
+
+    function endGame(){
         stop();
         checkAnswersOne();
-    }
-}
+        $("#correct-answers").text("Correct answers: " + correctAnswers);
+        $("#incorrect-answers").text("Incorrect answers: " + incorrectAnswers);
+        $("#blank-answers").text("Unanswered questions: " + blankAnswers);
+        $("#questions").hide();
+        $("#results").show();
+        $("#show-timer").hide();
 
-//Function that checks if the user's answer is correct
-function checkAnswersOne(){
-    var questionOneAnswer = $("input[name=answers-1]:checked").val();
-    if (questionOneAnswer === "yes"){
-        alert ("Correct!")
     }
-
-    else if (questionOneAnswer === "no" || questionOneAnswer === "maybe"){
-        alert ("Wrong!")
-    }
-
-    else {
-        alert ("I dunno man");
+    //Function that clears the intervalId variable
+    function stop() {
+        clearInterval(intervalId);
     }
 
+    //Function that sets a one-second interval that runs the decrement function
+    function startGame() {
+        //Initialize the visible elements on the page
+        clearInterval(intervalId);
+        $("input:radio").prop("checked", false);
+        $("#results").hide();
+        $("#start-game").hide();
+        $("#questions").show();
+        time = 10;
+        $("#show-timer").show();
+        $("#show-timer").html("<h2>Time remaining: " + time)
+        //Reset the user's score
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        blankAnswers = 0;
+        //Starts the timer
+        intervalId = setInterval(decrement, 1000);
+    }
 
+    $("#start-game").click(function(){
+        startGame();
+    });
 
-}
-//Function that clears the intervalId variable
-function stop(){
-    clearInterval(intervalId);
-}
+    $("#replay").click(function(){
+        startGame();
+    })
 
-//Function that sets a one-second interval that runs the decrement function
-function startTimer(){
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
-}
-
-startTimer();
+    $("#end-game").click(function(){
+        $("#show-timer").hide();
+        endGame();
+    })
+});
