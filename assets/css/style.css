@@ -1,8 +1,53 @@
+header{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    margin: 0px;
+}
+body{
+    margin: 0px;
+    font-family: "Open Sans", sans-serif;
+    background-image: url("../images/space.jpg")
+}
+h1{
+    margin: 0px;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+}
+h2{
+    margin-top: 0px;
+    padding-top: 30px;
+}
+h3{
+    margin-top: 0px;
+    padding-top: 20px;
+}
+button{
+    background-color: midnightblue;
+    color: white;
+    font-size: 24px;
+    height: 60px;
+    width: 240px;
+    padding: 15px 30px 15px 30px;
+    margin-top: 30px;
 
+}
+#container{
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    width: 860px;
+    margin: auto;
+    height: 920px;
+    text-align: center;
+    
+    
+}
 #questions{
     display: none;
+    margin-top: 0px;
 }
 #results{
+    margin-top: 0px;
     display: none;
 }
 form{
